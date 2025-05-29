@@ -81,6 +81,9 @@
 			<trans-unit id="tx_faq_domain_model_faq.heading" resname="tx_faq_domain_model_faq.heading">
 				<source>Listing for FAQ</source>
 			</trans-unit>
+			<trans-unit id="list_nofaqfound" resname="list_nofaqfound">
+				<source>No faq available.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
