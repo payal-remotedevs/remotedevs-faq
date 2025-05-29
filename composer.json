@@ -20,6 +20,11 @@
             "RemoteDevs\\RdFaq\\": "Classes"
         }
     },
+   "autoload-dev": {
+ 	"psr-4": {
+            "RD\\Faq\\Tests\\": "Tests"
+        }
+    },
     "replace": {
         "typo3-ter/rd_faq": "self.version"
     },
