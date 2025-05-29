@@ -13,15 +13,16 @@
         "typo3/cms-core": "^13.4"
     },
     "require-dev": {
-        "typo3/testing-framework": "^6.9.0"
+        "typo3/testing-framework": "^6.9.0",
+        "typo3/cms-install": "^13.4"
     },
     "autoload": {
         "psr-4": {
             "RemoteDevs\\RdFaq\\": "Classes"
         }
     },
-   "autoload-dev": {
- 	"psr-4": {
+    "autoload-dev": {
+        "psr-4": {
             "RD\\Faq\\Tests\\": "Tests"
         }
     },
@@ -30,9 +31,9 @@
     },
     "config": {
         "allow-plugins": {
-		"typo3/class-alias-loader": true,
-		"typo3/cms-composer-installers": true
-	},
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		},
         "vendor-dir": ".Build/vendor",
         "bin-dir": ".Build/bin"
     },
@@ -46,5 +47,7 @@
             "web-dir": ".Build/public",
             "extension-key": "rd_faq"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
