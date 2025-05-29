@@ -4,10 +4,10 @@
 		<header/>
 		<body>
 			<trans-unit id="faqplugintab.header" resname="faqplugintab.header">
-				<source>Rd FAQ</source>
+				<source>Rd F A Q</source>
 			</trans-unit>
 			<trans-unit id="tx_rdfaq_domain_model_faq" resname="tx_rdfaq_domain_model_faq">
-				<source>Rd FAQ</source>
+				<source>Rd F A Q</source>
 			</trans-unit>
 			<trans-unit id="tx_faq_domain_model_faq.description" resname="tx_faq_domain_model_faq.description">
 				<source>Description</source>
