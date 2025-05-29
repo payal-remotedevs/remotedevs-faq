@@ -24,6 +24,10 @@
         "typo3-ter/rd_faq": "self.version"
     },
     "config": {
+        "allow-plugins": {
+			"typo3/class-alias-loader": true,
+			"typo3/cms-composer-installers": true
+		},
         "vendor-dir": ".Build/vendor",
         "bin-dir": ".Build/bin"
     },
