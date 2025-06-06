@@ -6,6 +6,7 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'plugin',
     'author' => 'Solanki Payal',
     'author_email' => 'payal.remotedevs@gmail.com',
+    'author_company' => 'RemoteDevs',
     'state' => 'stable',
     'clearCacheOnLoad' => 0,
     'version' => '1.1.0',
