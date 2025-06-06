@@ -61,5 +61,3 @@ Filter by item
 :guilabel:`Filter by item`
 
 Toggle this field to allow the specific FAQ to appear as a filterable item when category or tag filters are shown on the frontend.
-
----
