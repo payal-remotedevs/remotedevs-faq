@@ -19,29 +19,50 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class FaqCacheService
 {
+    // /**
+    //  * Adds page cache tags by used storagePages.
+    //  * This adds tags with the scheme tx_faq_pid_[faq:pid]
+    //  * 
+    //  * @param CacheDataCollectorInterface $cacheDataCollector
+    //  * @param FaqDemand $demand
+    //  * @return void
+    //  */
+    // public function pageCacheByFaqDemandObject(
+    //     CacheDataCollectorInterface $cacheDataCollector,
+    //     FaqDemand $demand
+    // ): void {
+    //     $cacheTags = [];
+    //     if ($demand->getStoragePage()) {
+    //         // Add cache tags for each storage page
+    //         foreach (GeneralUtility::trimExplode(',', $demand->getStoragePage()) as $pageUid) {
+    //             // $cacheTags[] = 'tx_faq_pid_' . $pageUid;
+    //                $tagString = 'tx_faq_pid_' . $pageUid;
+    //                 $cacheTags[] = new CacheTag($tagString);
+    //         }
+    //     }
+    //     if (!empty($cacheTags)) {
+    //         $cacheDataCollector->addCacheTags(...$cacheTags);
+    //     }
+    // }
+
     /**
      * Adds page cache tags by used storagePages.
-     * This adds tags with the scheme tx_faq_pid_[faq:pid]
-     * 
-     * @param CacheDataCollectorInterface $cacheDataCollector
+     * This adds tags with the scheme tx_plainfaq_pid_[faq:pid]
+     *
      * @param FaqDemand $demand
-     * @return void
      */
-    public function pageCacheByFaqDemandObject(
-        CacheDataCollectorInterface $cacheDataCollector,
-        FaqDemand $demand
-    ): void {
+    public function addPageCacheTagsByFaqDemandObject(FaqDemand $demand): void
+    {
+
         $cacheTags = [];
         if ($demand->getStoragePage()) {
             // Add cache tags for each storage page
-            foreach (GeneralUtility::trimExplode(',', $demand->getStoragePage()) as $pageUid) {
-                // $cacheTags[] = 'tx_faq_pid_' . $pageUid;
-                   $tagString = 'tx_faq_pid_' . $pageUid;
-                    $cacheTags[] = new CacheTag($tagString);
+            foreach (GeneralUtility::trimExplode(',', $demand->getStoragePage()) as $pageId) {
+                $cacheTags[] = 'tx_faq_pid_' . $pageId;
             }
         }
-        if (!empty($cacheTags)) {
-            $cacheDataCollector->addCacheTags(...$cacheTags);
+        if (count($cacheTags) > 0) {
+            self::getTypoScriptFrontendController()->addCacheTags($cacheTags);
         }
     }
 }

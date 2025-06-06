@@ -8,12 +8,14 @@ use RemoteDevs\RdFaq\Domain\Model\Dto\FaqDemand;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
+use RemoteDevs\RdFaq\Pagination\NumberedPagination;
 use RemoteDevs\RdFaq\Event\ModifyListViewVariablesEvent;
 use RemoteDevs\RdFaq\Service\FaqCacheService;
 use RemoteDevs\RdFaq\Domain\Repository\FAQRepository;
 use TYPO3\CMS\Frontend\Page\PageInformation;
 use TYPO3\CMS\Core\Cache\CacheDataCollectorInterface;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 /**
  * This file is part of the "FAQs" Extension for TYPO3 CMS.
@@ -47,10 +49,10 @@ class FAQController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     /**
      * Assign contentObjectData and pageData view
      */
-    protected function initializeView(): void
+    protected function initializeView(ViewInterface $view): void
     {
         $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
-        $this->view->assign('pageData', $this->getFrontendPageInformation()->getPageRecord());
+        $this->view->assign('pageData', $this->getFrontendPageInformation());
     }
 
 
@@ -79,12 +81,12 @@ class FAQController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->eventDispatcher->dispatch($modifyListViewVariablesEvent);
         $variables = $modifyListViewVariablesEvent->getVariables();
         $this->view->assignMultiple($variables);
-
-        /** @var CacheDataCollectorInterface|null $cacheDataCollector */
-        $cacheDataCollector = $this->request->getAttribute('frontend.cache.collector');
-        if ($cacheDataCollector !== null) {
-            $this->faqCacheService->pageCacheByFaqDemandObject($cacheDataCollector, $faqDemandObject);
-        }
+        // /** @var CacheDataCollectorInterface|null $cacheDataCollector */
+        // $cacheDataCollector = $this->request->getAttribute('frontend.cache.collector');
+        // if ($cacheDataCollector !== null) {
+        //     $this->faqCacheService->pageCacheByFaqDemandObject($cacheDataCollector, $faqDemandObject);
+        // }
+        $this->faqCacheService->addPageCacheTagsByFaqDemandObject($faqDemandObject);
 
         return $this->htmlResponse();
     }
@@ -163,7 +165,7 @@ class FAQController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         if ($enablePagination && $itemsPerPage > 0) {
             $paginator = new QueryResultPaginator($faqs, $currentPage, $itemsPerPage);
-            $pagination = new SlidingWindowPagination($paginator, $maxNumPages);
+            $pagination = new NumberedPagination($paginator, $maxNumPages);
             $paginationData['paginator'] = $paginator;
             $paginationData['pagination'] = $pagination;
         }
@@ -171,13 +173,11 @@ class FAQController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         return $paginationData;
     }
 
-    /**
-     * Returns the page information
-     *
-     * @return PageInformation
-     */
-    protected function getFrontendPageInformation(): PageInformation
+    protected function getFrontendPageInformation(): array
     {
-        return $this->request->getAttribute('frontend.page.information');
+        $pageId = (int)($GLOBALS['TSFE']->id ?? 0);
+
+        $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+        return $pageRepository->getPage($pageId); 
     }
 }

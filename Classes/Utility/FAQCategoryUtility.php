@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace RemoteDevs\RdFaq\Utility;
 
-use Doctrine\DBAL\ArrayParameterType;
 use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\TimeTracker\TimeTracker;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -48,11 +48,11 @@ class FAQCategoryUtility
                     'parentcategory',
                     $queryBuilder->createNamedParameter(
                         array_map('intval', explode(',', $idList)),
-                        ArrayParameterType::INTEGER
+                        Connection::PARAM_INT_ARRAY
                     )
                 )
             )
-            ->executeQuery();
+            ->execute();
 
         while (($row = $res->fetchAssociative())) {
             $counter++;

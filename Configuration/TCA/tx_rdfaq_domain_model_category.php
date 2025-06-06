@@ -155,6 +155,7 @@ return [
                     ],
                     'parentField' => 'parentcategory',
                 ],
+                'default' => 0,
             ],
         ],
     ],

@@ -151,16 +151,30 @@ return [
             'exclude' => true,
             'label' => 'LLL:EXT:rd_faq/Resources/Private/Language/locallang_db.xlf:tx_faq_domain_model_faq.image',
             'description' => 'LLL:EXT:rd_faq/Resources/Private/Language/locallang_db.xlf:tx_faq_domain_model_faq.image.description',
-            'config' => [
-                'type' => 'file',
-                'allowed' => ['jpg', 'jpeg', 'png', 'gif', 'svg'],
-                'maxitems' => 1,
-                'appearance' => [
-                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:media.addFileReference',
-                    'fileUploadAllowed' => true,
-                    'fileByUrlAllowed' => true,
+            'config' =>         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+                'image',
+                [
+                    'appearance' => [
+                        'createNewRelationLinkTitle' => 'Add image',
+                        'showPossibleLocalizationRecords' => true,
+                        'showRemovedLocalizationRecords' => true,
+                        'showAllLocalizationLink' => true,
+                        'showSynchronizationLink' => true,
+                    ],
+                    'foreign_types' => [
+                        '0' => [
+                            'showitem' => '
+                                --palette--;;filePalette'
+                        ],
+                        \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => [
+                            'showitem' => '
+                                --palette--;;filePalette'
+                        ],
+                    ],
+                    'maxitems' => 1,
                 ],
-            ],
+                $allowedFileExtensions = 'jpg,jpeg,png,svg,gif' 
+            ),
         ],
         'sorting' => [
             'exclude' => true,

@@ -3,6 +3,7 @@ defined('TYPO3') || die();
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 
 ExtensionManagementUtility::addTcaSelectItemGroup(
@@ -14,6 +15,8 @@ ExtensionManagementUtility::addTcaSelectItemGroup(
 );
 $pluginConfig = ['faqlist'];
 
+$pluginlisttext = 'FAQ Plugins';
+
 foreach ($pluginConfig as $pluginName) {
     $pluginNameForLabel =  $pluginName;
     ExtensionUtility::registerPlugin(
@@ -21,7 +24,7 @@ foreach ($pluginConfig as $pluginName) {
         GeneralUtility::underscoredToUpperCamelCase($pluginName),
         'LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:plugin.' . $pluginNameForLabel . '.title',
         'rdfaq-plugin-' . str_replace('_', '-', $pluginNameForLabel),
-        'LLL:EXT:rd_faq/Resources/Private/Language/locallang_db.xlf:faqplugintab.header',
+        $pluginlisttext,
         'LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:plugin.' . $pluginNameForLabel . '.description'
     );
 
