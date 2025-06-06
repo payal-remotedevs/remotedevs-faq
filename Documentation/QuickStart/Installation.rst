@@ -1,4 +1,4 @@
-;.. _quickInstallation:
+.. _quickInstallation:
 
 ==================
 Quick installation
