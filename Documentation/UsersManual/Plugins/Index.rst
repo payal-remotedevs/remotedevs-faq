@@ -97,7 +97,7 @@ To register custom layouts, use the following TypoScript:
 
 .. code-block:: typoscript
 
-   tx_remotedevsfaq.templateLayouts {
+   tx_rdfaq.templateLayouts {
        1 = FAQ-layout
    }
 
@@ -151,7 +151,7 @@ This will add a new option called **FAQ-layout** to the Template Layout dropdown
       </f:else>
     </f:if>
 
-  As you can see in this example a different partial is loaded if the layout 1 is used.
+As you can see in this example a different partial is loaded if the layout 1 is used.
 
 .. _plugin-additional:
 
@@ -164,4 +164,3 @@ Additional Settings
 - **Storage Page**:  
   Select the page (or folder) where FAQ records are stored. This ensures the plugin loads data from the right place.
 
----
