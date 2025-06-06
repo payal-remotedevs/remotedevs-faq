@@ -8,10 +8,10 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'payal.remotedevs@gmail.com',
     'state' => 'stable',
     'clearCacheOnLoad' => 0,
-    'version' => '1.1.0',
+    'version' => '1.0.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '13.0.0-13.4.99',
+            'typo3' => '12.0.0-12.4.99',
         ],
         'conflicts' => [],
         'suggests' => [],

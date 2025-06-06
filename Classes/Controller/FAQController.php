@@ -14,6 +14,7 @@ use RemoteDevs\RdFaq\Service\FaqCacheService;
 use RemoteDevs\RdFaq\Domain\Repository\FAQRepository;
 use TYPO3\CMS\Frontend\Page\PageInformation;
 use TYPO3\CMS\Core\Cache\CacheDataCollectorInterface;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 
 /**
  * This file is part of the "FAQs" Extension for TYPO3 CMS.
@@ -50,7 +51,7 @@ class FAQController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     protected function initializeView(): void
     {
         $this->view->assign('contentObjectData', $this->request->getAttribute('currentContentObject')->data);
-        $this->view->assign('pageData', $this->getFrontendPageInformation()->getPageRecord());
+        $this->view->assign('pageData', $this->getFrontendPageInformation());
     }
 
 
@@ -79,7 +80,6 @@ class FAQController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $this->eventDispatcher->dispatch($modifyListViewVariablesEvent);
         $variables = $modifyListViewVariablesEvent->getVariables();
         $this->view->assignMultiple($variables);
-
         /** @var CacheDataCollectorInterface|null $cacheDataCollector */
         $cacheDataCollector = $this->request->getAttribute('frontend.cache.collector');
         if ($cacheDataCollector !== null) {
@@ -171,13 +171,22 @@ class FAQController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         return $paginationData;
     }
 
-    /**
-     * Returns the page information
-     *
-     * @return PageInformation
-     */
-    protected function getFrontendPageInformation(): PageInformation
+    // /**
+    //  * Returns the page information
+    //  *
+    //  * @return PageInformation
+    //  */
+    // protected function getFrontendPageInformation(): PageInformation
+    // {
+    //     return $this->request->getAttribute('frontend.page.information');
+    // }
+
+
+    protected function getFrontendPageInformation(): array
     {
-        return $this->request->getAttribute('frontend.page.information');
+        $pageId = (int)($GLOBALS['TSFE']->id ?? 0);
+
+        $pageRepository = GeneralUtility::makeInstance(PageRepository::class);
+        return $pageRepository->getPage($pageId); 
     }
 }

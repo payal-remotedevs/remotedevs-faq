@@ -12,25 +12,25 @@
                 <el>
                     <!-- Order field -->
                     <settings.orderField>
-                            <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <label />
-                                        <value />
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField.title</label>
-                                        <value>title</value>
-                                    </numIndex>
-                                    <numIndex index="2">
-                                        <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField.sorting</label>
-                                        <value>sorting</value>
-                                    </numIndex>
-                                </items>
-                            </config>
+                        <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField</label>
+                       <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0"></numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <numIndex index="0">LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField.title</numIndex>
+                                    <numIndex index="1">title</numIndex>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <numIndex index="0">LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderField.sorting</numIndex>
+                                    <numIndex index="1">sorting</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.orderField>
                      <!-- Order direction -->
                     <settings.orderDirection>
@@ -40,16 +40,16 @@
                             <renderType>selectSingle</renderType>
                             <items>
                                 <numIndex index="0" type="array">
-                                    <label />
-                                    <value />
+                                    <numIndex index="0"></numIndex>
+                                    <numIndex index="1"></numIndex>
                                 </numIndex>
                                 <numIndex index="1">
-                                    <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderDirection.ascending</label>
-                                    <value>asc</value>
+                                   <numIndex index="0">LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderDirection.ascending</numIndex>
+                                    <numIndex index="1">asc</numIndex>
                                 </numIndex>
                                 <numIndex index="2">
-                                    <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderDirection.descending</label>
-                                    <value>desc</value>
+                                    <numIndex index="0">LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.orderDirection.descending</numIndex>
+                                    <numIndex index="1">desc</numIndex>
                                 </numIndex>
                             </items>
                         </config>
@@ -73,24 +73,32 @@
                             <renderType>selectSingle</renderType>
                             <items>
                                 <numIndex index="0" type="array">
-                                    <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.ignore</label>
-                                    <value></value>
+                                    <numIndex index="0">
+                                        LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.ignore</numIndex>
+                                    <numIndex index="1"></numIndex>
                                 </numIndex>
                                 <numIndex index="1" type="array">
-                                    <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.or</label>
-                                    <value>OR</value>
+                                    <numIndex index="0">
+                                        LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.or</numIndex>
+                                    <numIndex index="1">OR</numIndex>
                                 </numIndex>
                                 <numIndex index="2" type="array">
-                                    <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.and</label>
-                                    <value>AND</value>
+                                    <numIndex index="0">
+                                        LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.and
+                                    </numIndex>
+                                    <numIndex index="1">AND</numIndex>
                                 </numIndex>
                                 <numIndex index="3" type="array">
-                                    <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.notor</label>
-                                    <value>NOTOR</value>
+                                    <numIndex index="0">
+                                        LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.notor
+                                    </numIndex>
+                                    <numIndex index="1">NOTOR</numIndex>
                                 </numIndex>
                                 <numIndex index="4" type="array">
-                                    <label>LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.notand</label>
-                                    <value>NOTAND</value>
+                                    <numIndex index="0">
+                                        LLL:EXT:rd_faq/Resources/Private/Language/locallang_be.xlf:flexforms.plugin.field.categoryModeConjunction.notand
+                                    </numIndex>
+                                    <numIndex index="1">NOTAND</numIndex>
                                 </numIndex>
                             </items>
                         </config>
@@ -213,8 +221,8 @@
                             <itemsProcFunc>RemoteDevs\RdFaq\Hooks\ItemsProcFunc->userTemplateLayout</itemsProcFunc>
                             <items>
                                 <numIndex index="0" type="array">
-                                    <label />
-                                    <value />
+                                    <numIndex index="0"></numIndex>
+                                    <numIndex index="1"></numIndex>
                                 </numIndex>
                             </items>
                         </config>

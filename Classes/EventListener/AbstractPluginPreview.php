@@ -19,7 +19,6 @@ use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\View\ViewFactoryData;
-// use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 abstract class AbstractPluginPreview
@@ -28,9 +27,7 @@ abstract class AbstractPluginPreview
 
     public function __construct(
         protected readonly IconFactory $iconFactory,
-        protected readonly PageRenderer $pageRenderer,
-        // protected readonly ViewFactoryInterface $viewFactory
-        
+        protected readonly PageRenderer $pageRenderer,        
     ) {
     }
 
@@ -60,14 +57,6 @@ abstract class AbstractPluginPreview
      */
     protected function renderAsTable(array $data, string $pluginName = ''): string
     {
-        // $template = GeneralUtility::getFileAbsFileName('EXT:rd_faq/Resources/Private/PluginPreview/PageLayoutView.html');
-        // $viewFactoryData = new ViewFactoryData(
-        //     templatePathAndFilename: $template,
-        //     request: $request,
-        // );
-        // $view = $this->viewFactory->create($viewFactoryData);
-
-
         $view = GeneralUtility::makeInstance(StandaloneView::class);
         $view->setTemplatePathAndFilename('EXT:rd_faq/Resources/Private/PluginPreview/PageLayoutView.html');
 
@@ -258,7 +247,7 @@ abstract class AbstractPluginPreview
 
         if (is_array($record)) {
             $data = '<span data-toggle="tooltip" data-placement="top" data-title="id=' . $record['uid'] . '">'
-                . $this->iconFactory->getIconForRecord($table, $record, IconSize::SMALL)->render()
+                . $this->iconFactory->getIconForRecord($table, $record, 'small')->render()
                 . '</span> ';
             $content = BackendUtility::wrapClickMenuOnIcon($data, $table, $record['uid'], '', $record);
 

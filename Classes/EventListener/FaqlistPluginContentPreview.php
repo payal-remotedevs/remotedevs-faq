@@ -19,21 +19,6 @@ use RemoteDevs\RdFaq\EventListener\AbstractPluginPreview;
 final class FaqlistPluginContentPreview extends AbstractPluginPreview
 {
     #[AsEventListener('rdfaq/faqlist-preview')]
-    // public function __invoke(PageContentPreviewRenderingEvent $event): void
-    // {
-    //     if ($event->getTable() !== 'tt_content' ||
-    //         $event->getRecordType() !== 'rdfaq_faqlist'
-    //     ) {
-    //         return;
-    //     }
-
-    //     $previewContent = $this->renderPreviewContent(
-    //         $event->getRecord(),
-    //         $event->getPageLayoutContext()->getCurrentRequest()
-    //     );
-    //     $event->setPreviewContent($previewContent);
-    // }
-
     public function __invoke(PageContentPreviewRenderingEvent $event): void
     {
         if ($event->getTable() !== 'tt_content' ||
@@ -42,11 +27,7 @@ final class FaqlistPluginContentPreview extends AbstractPluginPreview
             return;
         }
 
-        // $previewContent = $this->renderPreviewContent(
-        //     $event->getRecord(),
-        //     $event->getPageLayoutContext()->getCurrentRequest()
-        // );
-            $previewContent = $this->renderPreviewContent($event->getRecord());
+        $previewContent = $this->renderPreviewContent($event->getRecord());
 
         $event->setPreviewContent($previewContent);
     }
@@ -57,7 +38,6 @@ final class FaqlistPluginContentPreview extends AbstractPluginPreview
         $flexFormData = $this->getFlexFormData($record['pi_flexform']);
         $pluginName = $this->getPluginName($record);
 
-        // $this->setPluginPidConfig($data, $flexFormData, 'detailPid', 'additional');
 
         $this->setStoragePage($data, $flexFormData, 'settings.storagePage');
 

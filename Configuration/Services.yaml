@@ -6,3 +6,7 @@ services:
 
     RemoteDevs\RdFaq\:
         resource: '../Classes/*'
+        exclude: '../Classes/Domain/Model/*'
+    RemoteDevs\RdFaq\EventListener\FaqlistPluginContentPreview:
+        tags:
+            - { name: event.listener, event: TYPO3\CMS\Backend\View\Event\PageContentPreviewRenderingEvent }

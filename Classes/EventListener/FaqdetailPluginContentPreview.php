@@ -27,23 +27,6 @@ use RemoteDevs\RdFaq\EventListener\AbstractPluginPreview;
 final class FaqdetailPluginContentPreview extends AbstractPluginPreview
 {
     #[AsEventListener('rdfaq/faqdetail-preview')]
-    // public function __invoke(PageContentPreviewRenderingEvent $event): void
-    // {
-
-    //     if ($event->getTable() !== 'tt_content' ||
-    //         $event->getRecordType() !== 'rdfaq_faqdetail'
-    //     ) {
-    //         return;
-    //     }
-
-    //     // $previewContent = $this->renderPreviewContent(
-    //     //     $event->getRecord(),
-    //     //     $event->getPageLayoutContext()->getCurrentRequest()
-    //     // );
-    //     $previewContent = $this->renderPreviewContent($event->getRecord());
-
-    //     $event->setPreviewContent($previewContent);
-    // }
     public function __invoke(PageContentPreviewRenderingEvent $event): void
     {
         if ($event->getTable() !== 'tt_content' ||
@@ -52,10 +35,6 @@ final class FaqdetailPluginContentPreview extends AbstractPluginPreview
             return;
         }
 
-        // $previewContent = $this->renderPreviewContent(
-        //     $event->getRecord(),
-        //     $event->getPageLayoutContext()->getCurrentRequest()
-        // );
         $previewContent = $this->renderPreviewContent($event->getRecord());
 
         $event->setPreviewContent($previewContent);

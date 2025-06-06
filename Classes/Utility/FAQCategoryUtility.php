@@ -15,6 +15,7 @@ use Doctrine\DBAL\ArrayParameterType;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\TimeTracker\TimeTracker;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Doctrine\DBAL\Connection;
 
 class FAQCategoryUtility
 {
@@ -48,7 +49,7 @@ class FAQCategoryUtility
                     'parentcategory',
                     $queryBuilder->createNamedParameter(
                         array_map('intval', explode(',', $idList)),
-                        ArrayParameterType::INTEGER
+                        Connection::PARAM_INT_ARRAY
                     )
                 )
             )
