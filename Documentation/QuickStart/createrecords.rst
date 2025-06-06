@@ -69,13 +69,14 @@ You’ll now add the FAQ Plugin to a regular page to display your records.
    - Set the :guilabel:`Storage Page` to the **FAQ Storage** folder
    - Adjust other options if needed
 
- .. include:: /Images/PluginAdditional.png
+.. important::
 
-#. Save the Plugin
+   Click :guilabel:`Save` to store the Plugin configuration.
+
 
 Check your frontend
 ===================
 
 Open the FAQ display page on the frontend. Your created FAQ records should now be visible.
 
-Wanna customize how the questions/answers are styled or grouped? Slide into the :ref:`Templating <quickTemplating>` chapter to learn more.
+Wanna customize how the questions/answers are styled or grouped? Slide into the :ref:`Viewing of Field <faqFields>` chapter to learn more.
