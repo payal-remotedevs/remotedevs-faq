@@ -17,13 +17,6 @@ modern TYPO3 practices and technologies.
 -  Clean separation of domain models: FAQ, Category  
 -  Easy to extend or integrate with other extensions  
 
-.. pull-quote::
-
-   The RemoteDevs FAQ extension makes it ridiculously easy to manage and display FAQs —
-   like an interactive knowledge base for TYPO3.
-
-   – Feedback from an early adopter
-
 Further links
 -------------
 
